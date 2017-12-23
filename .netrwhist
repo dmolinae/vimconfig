@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/daniel/dev/ionic/myApp'
+let g:netrw_dirhist_2='/home/daniel/dev/ionic/myApp/src'
+let g:netrw_dirhist_3='/home/daniel/dev/ionic/myApp/src/providers'
+let g:netrw_dirhist_4='/home/daniel/dev/ionic/myApp/src/providers/auth'
+let g:netrw_dirhist_5='/home/daniel/dev/ionic/myApp'
