@@ -1,3 +1,4 @@
+" Vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -11,6 +12,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
+Plugin 'sheerun/vim-polyglot'
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jiangmiao/auto-pairs'
@@ -19,7 +21,7 @@ Plugin 'matze/vim-move'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mhinz/vim-startify'
 Plugin 'pelodelfuego/vim-swoop'
-Plugin 'sheerun/vum-polyglot'
+Plugin 'alvan/vim-closetag'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -37,10 +39,10 @@ Plugin 'gko/vim-coloresque'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'dominikduda/vim_current_word'
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" my config
 set fileencoding=utf-8
 set termguicolors
 filetype on
@@ -52,10 +54,10 @@ colorscheme onedark
 
 set colorcolumn=90
 set number
-let mapleader=" "
+let mapleader=","
 set showmatch
 set mouse=a
-set scrolloff=5
+set scrolloff=10
 
 set hidden
 set history=100
@@ -74,25 +76,32 @@ vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
-noremap ñ l
-noremap l k
-noremap k j
-noremap j h
+" smarth way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
+" if accidentaly type with mayus
 :command WQ wq
 :command Wq wq
 :command W w
 :command Q q
 
-noremap <C-t> :tabnew<CR>
+" space to search
+map <space> /
+
+" navigate between buffers
+map <leader>l :bnext<cr>
+map <leader>h :bprevious<cr>
 
 map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
-noremap <C-Left> :tabprevious<CR>
-noremap <C-Right> :tabnext<CR>
+noremap <C-s> :tabprevious<CR>
+noremap <C-f> :tabnext<CR>
 
-noremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-noremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
+noremap <silent> <A-s> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+noremap <silent> <A-f> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
 map <Enter> o<ESC>
 map <S-Enter> O<ESC>
@@ -127,7 +136,7 @@ else
 endif
 
 " startify
-noremap <C-s> :Startify<CR>
+noremap <C-t> :Startify<CR>
 
 " Check for file modifications automatically
 " (current buffer only).
@@ -152,9 +161,6 @@ let g:vim_current_word#highlight_current_word = 1
 
 " rainbow_active
 let g:rainbow_active = 1
-
-" move
-let g:move_key_modifier = 'C'
 
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"
