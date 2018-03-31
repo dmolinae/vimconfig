@@ -13,7 +13,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
 Plugin 'sheerun/vim-polyglot'
-Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -31,13 +30,17 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'godlygeek/tabular'
-Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'vim-airline/vim-airline'
 
-Plugin 'gko/vim-coloresque'
+Plugin 'KabbAmine/vCoolor.vim'
+Plugin 'lilydjwg/colorizer'
+Plugin 'shmargum/vim-sass-colors'
+
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'dominikduda/vim_current_word'
+Plugin 'drmingdrmer/vim-toggle-quickfix'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -45,8 +48,6 @@ filetype plugin indent on    " required
 " my config
 set fileencoding=utf-8
 set termguicolors
-filetype on
-filetype plugin indent on
 
 syntax on
 let g:onedark_terminal_italics=1
@@ -63,7 +64,7 @@ set hidden
 set history=100
 
 filetype indent on
-"set nowrap
+set nowrap
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -103,9 +104,6 @@ noremap <C-f> :tabnext<CR>
 noremap <silent> <A-s> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 noremap <silent> <A-f> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
-map <Enter> o<ESC>
-map <S-Enter> O<ESC>
-
 " airline
 set noshowmode
 let g:airline_powerline_fonts = 1
@@ -113,6 +111,7 @@ let g:airline_theme='onedark'
 
 " nerdtree
 nmap <leader>n :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "*",
@@ -159,8 +158,8 @@ command! NoAutoChecktime let b:autochecktime=0
 " current word
 let g:vim_current_word#highlight_current_word = 1
 
-" rainbow_active
-let g:rainbow_active = 1
+" vim move
+let g:move_key_modifier = 'C'
 
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -186,3 +185,21 @@ highlight link Error DiffDelete
 " markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
+
+" ctrlp
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|plugins\|platforms'
+
+" vColoor
+let g:vcoolor_disable_mappings = 1
+let g:vcoolor_lowercase = 1
+let g:vcoolor_map = '<leader>c'
+
+" YCM
+nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>r :YcmCompleter GoToReferences<CR>
+
+" fugitive
+noremap <leader>s :Gstatus<CR>
+
+" quickfix
+nmap <leader>q <Plug>window:quickfix:toggle
