@@ -137,3 +137,6 @@ highlight link Error DiffDelete
 " markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
+
+"Youcompleteme fix
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
