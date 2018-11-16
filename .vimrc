@@ -41,6 +41,7 @@ Plugin 'shmargum/vim-sass-colors'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'dominikduda/vim_current_word'
 Plugin 'drmingdrmer/vim-toggle-quickfix'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -113,6 +114,7 @@ let g:airline_theme='onedark'
 nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=['.vim$[[dir]]', 'node_modules$[[dir]]']
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "*",
     \ "Staged"    : "+",
@@ -196,6 +198,7 @@ let g:vcoolor_map = '<leader>c'
 
 " YCM
 nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>f :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>r :YcmCompleter GoToReferences<CR>
 
 " fugitive
@@ -203,3 +206,5 @@ noremap <leader>s :Gstatus<CR>
 
 " quickfix
 nmap <leader>q <Plug>window:quickfix:toggle
+nmap <leader>qn :cn<CR>
+nmap <leader>qp :cp<CR>
