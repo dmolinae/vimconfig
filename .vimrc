@@ -114,7 +114,7 @@ let g:airline_theme='onedark'
 nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['.vim$[[dir]]', 'node_modules$[[dir]]']
+let NERDTreeIgnore=['*.swo', '*.swp', 'node_modules$[[dir]]']
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "*",
     \ "Staged"    : "+",
