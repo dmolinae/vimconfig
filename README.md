@@ -11,4 +11,8 @@ Add a link to your `.vimrc` file
 
     ln -sf ~/.vim/.vimrc ~/.vimrc
 
+Install vundle
+
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 That's it, now you can enter vim and type `:PluginInstall` to install all the plugins.
