@@ -80,10 +80,10 @@ vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
 " smarth way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+noremap <Esc>j <C-W>j
+noremap <Esc>k <C-W>k
+noremap <Esc>h <C-W>h
+noremap <Esc>l <C-W>l
 
 " if accidentaly type with mayus
 :command WQ wq
