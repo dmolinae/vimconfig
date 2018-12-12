@@ -49,6 +49,7 @@ filetype plugin indent on    " required
 " my config
 set fileencoding=utf-8
 set termguicolors
+set lazyredraw
 
 syntax on
 let g:onedark_terminal_italics=1
