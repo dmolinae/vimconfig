@@ -208,6 +208,8 @@ noremap <leader>gs :Gstatus<CR>
 noremap <leader>gd :Gdiff<CR>
 noremap <leader>gw :Gwrite<CR>
 noremap <leader>gr :Gread<CR>
+noremap <leader>gb :Gblame<CR>
+noremap <leader>gl :Glog<CR>
 
 " quickfix
 nmap <leader>q <Plug>window:quickfix:toggle
