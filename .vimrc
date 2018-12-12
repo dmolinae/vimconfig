@@ -98,7 +98,8 @@ map <space> /
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
-map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+set wildignore+=node_modules/**,*.swp,*.swo
+map <leader>s :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj **/*.*" <Bar> cw<CR>
 
 noremap <C-s> :tabprevious<CR>
 noremap <C-f> :tabnext<CR>
