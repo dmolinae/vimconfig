@@ -204,7 +204,10 @@ nnoremap <leader>f :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>r :YcmCompleter GoToReferences<CR>
 
 " fugitive
-noremap <leader>s :Gstatus<CR>
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gd :Gdiff<CR>
+noremap <leader>gw :Gwrite<CR>
+noremap <leader>gr :Gread<CR>
 
 " quickfix
 nmap <leader>q <Plug>window:quickfix:toggle
