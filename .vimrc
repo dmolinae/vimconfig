@@ -209,7 +209,8 @@ noremap <leader>gd :Gdiff<CR>
 noremap <leader>gw :Gwrite<CR>
 noremap <leader>gr :Gread<CR>
 noremap <leader>gb :Gblame<CR>
-noremap <leader>gl :Glog<CR>
+noremap <leader>gl :Glog -- %<CR><CR>
+noremap <leader>gg :Ggrep 
 
 " quickfix
 nmap <leader>q <Plug>window:quickfix:toggle
