@@ -21,6 +21,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mhinz/vim-startify'
 Plugin 'pelodelfuego/vim-swoop'
 Plugin 'alvan/vim-closetag'
+Plugin 'Chiel92/vim-autoformat'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -42,6 +43,7 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'dominikduda/vim_current_word'
 Plugin 'drmingdrmer/vim-toggle-quickfix'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -116,7 +118,7 @@ let g:airline_theme='onedark'
 nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['*.swo', '*.swp', 'node_modules$[[dir]]']
+let NERDTreeIgnore=['\.swo$', '\.swp$', 'node_modules$[[dir]]']
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "*",
     \ "Staged"    : "+",
@@ -191,7 +193,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 
 " ctrlp
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|plugins\|platforms'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|android\|git\|plugins\|platforms'
 
 " vColoor
 let g:vcoolor_disable_mappings = 1
@@ -216,3 +218,6 @@ noremap <leader>gg :Ggrep
 nmap <leader>q <Plug>window:quickfix:toggle
 nmap <leader>qn :cn<CR>
 nmap <leader>qp :cp<CR>
+
+" autoformat
+noremap <leader>af :Autoformat<CR>
