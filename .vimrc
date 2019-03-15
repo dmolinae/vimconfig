@@ -40,7 +40,8 @@ Plugin 'lilydjwg/colorizer'
 Plugin 'shmargum/vim-sass-colors'
 
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'dominikduda/vim_current_word'
+" Plugin 'dominikduda/vim_current_word'
+Plugin 'RRethy/vim-illuminate'
 Plugin 'drmingdrmer/vim-toggle-quickfix'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
@@ -142,24 +143,6 @@ endif
 
 " startify
 noremap <C-t> :Startify<CR>
-
-" Check for file modifications automatically
-" (current buffer only).
-" Use :NoAutoChecktime to disable it (uses b:autochecktime)
-set autoread
-fun! MyAutoCheckTime()
-  " only check timestamp for normal files
-  if &buftype != '' | return | endif
-  if ! exists('b:autochecktime') || b:autochecktime
-    checktime %
-    let b:autochecktime = 1
-  endif
-endfun
-augroup MyAutoChecktime
-  au!
-  au FocusGained,BufEnter,CursorHold * call MyAutoCheckTime()
-augroup END
-command! NoAutoChecktime let b:autochecktime=0
 
 " current word
 let g:vim_current_word#highlight_current_word = 1
