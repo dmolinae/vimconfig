@@ -19,7 +19,7 @@ That's it, now you can enter vim and type `:PluginInstall` to install all the pl
 
 ## Aditional installation of YouCompleteMe
 
-Install dependencies first
+Install dependencies
 
 ### xbuild
 `sudo apt-get install -y mono-xbuild`
@@ -30,8 +30,8 @@ wget https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz
 sudo tar -xvf go1.12.7.linux-amd64.tar.gz
 sudo mv go /usr/local
 echo export GOROOT=/usr/local/go >> ~/.zshrc
-echo export PATH=$GOROOT/bin:$PATH >> ~/.zshrc
 ```
+Paste at the end of .zshrc `export PATH=$GOROOT/bin:$PATH`
 
 ### node & npm
 ```
@@ -48,10 +48,16 @@ sudo npm install -g typescript
 ### rustc & cargo
 ```
 curl https://sh.rustup.rs -sSf | sh
-echo export PATH="$HOME/.cargo/bin:$PATH" >> ~/.zshrc
 ```
+Paste at the end of .zshrc `export PATH="$HOME/.cargo/bin:$PATH"`
 
-Then install plugin with
+### Then install plugin with
 
+    sudo apt install cmake
+    sudo apt-get install build-essential checkinstall
+    sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+    sudo wget https://www.python.org/ftp/python/2.7.16/Python-2.7.16.tgz
+    sudo tar xzf Python-2.7.16.tgz
+    
     cd ~/.vim/bundle/YouCompleteMe
     ./install.py --all
