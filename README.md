@@ -54,10 +54,7 @@ Paste at the end of .zshrc `export PATH="$HOME/.cargo/bin:$PATH"`
 ### Then install plugin with
 
     sudo apt install cmake
-    sudo apt-get install build-essential checkinstall
-    sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
-    sudo wget https://www.python.org/ftp/python/2.7.16/Python-2.7.16.tgz
-    sudo tar xzf Python-2.7.16.tgz
+    sudo apt install build-essential cmake python3-dev
     
     cd ~/.vim/bundle/YouCompleteMe
-    ./install.py --all
+    python3 install.py --all
