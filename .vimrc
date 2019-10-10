@@ -54,6 +54,12 @@ set fileencoding=utf-8
 set termguicolors
 set lazyredraw
 
+" folding
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
 syntax on
 let g:onedark_terminal_italics=1
 colorscheme onedark
@@ -116,22 +122,20 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='onedark'
 
 " nerdtree
-nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.swo$', '\.swp$', 'node_modules$[[dir]]']
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "*",
-    \ "Staged"    : "+",
-    \ "Untracked" : "~",
-    \ "Renamed"   : ">",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "x",
-    \ "Dirty"     : "✗ ",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+
+" Open NERDTree in the directory of the current file (or /home if no file is open)
+nmap <silent> <leader>n :call NERDTreeToggleInCurDir()<cr>
+function! NERDTreeToggleInCurDir()
+  " If NERDTree is open in the current buffer
+  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+    exe ":NERDTreeClose"
+  else
+    exe ":NERDTreeFind"
+  endif
+endfunction
 
 " gitgutter
 set updatetime=250
@@ -193,9 +197,9 @@ noremap <leader>gs :Gstatus<CR>
 noremap <leader>gd :Gdiff<CR>
 noremap <leader>gw :Gwrite<CR>
 noremap <leader>gr :Gread<CR>
+noremap <leader>ge :Gedit<CR>
 noremap <leader>gb :Gblame<CR>
 noremap <leader>gl :Glog -- %<CR><CR>
-noremap <leader>gg :Ggrep 
 
 " quickfix
 nmap <leader>q <Plug>window:quickfix:toggle
