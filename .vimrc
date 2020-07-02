@@ -23,15 +23,21 @@ Plugin 'pelodelfuego/vim-swoop'
 Plugin 'alvan/vim-closetag'
 Plugin 'Chiel92/vim-autoformat'
 
+"Plugin 'ipod825/vim-netranger'
+Plugin 'francoiscabrol/ranger.vim'
+"Plugin 'lambdalisue/fern.vim'
+"Plugin 'jeetsukumaran/vim-filebeagle'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'rbong/vim-flog'
 
 Plugin 'godlygeek/tabular'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'mileszs/ack.vim'
 
 Plugin 'vim-airline/vim-airline'
 
@@ -41,10 +47,15 @@ Plugin 'shmargum/vim-sass-colors'
 
 Plugin 'ryanoasis/vim-devicons'
 " Plugin 'dominikduda/vim_current_word'
-Plugin 'RRethy/vim-illuminate'
+"Plugin 'RRethy/vim-illuminate'
 Plugin 'drmingdrmer/vim-toggle-quickfix'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-ragtag'
+"Plugin 'tpope/vim-vinegar'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -60,7 +71,7 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=2
 
-syntax on
+"syntax on
 let g:onedark_terminal_italics=1
 colorscheme onedark
 
@@ -108,7 +119,6 @@ map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
 set wildignore+=node_modules/**,*.swp,*.swo
-map <leader>s :execute "noautocmd vimgrep /\\<" . expand("<cword>") . "\\>/gj **/*.*" <Bar> cw<CR>
 
 noremap <C-s> :tabprevious<CR>
 noremap <C-f> :tabnext<CR>
@@ -199,7 +209,8 @@ noremap <leader>gw :Gwrite<CR>
 noremap <leader>gr :Gread<CR>
 noremap <leader>ge :Gedit<CR>
 noremap <leader>gb :Gblame<CR>
-noremap <leader>gl :Glog -- %<CR><CR>
+noremap <leader>glf :Glog -- %<CR><CR>
+noremap <leader>gl :Flog<CR>
 
 " quickfix
 nmap <leader>q <Plug>window:quickfix:toggle
@@ -208,3 +219,22 @@ nmap <leader>qp :cp<CR>
 
 " autoformat
 noremap <leader>af :Autoformat<CR>
+
+" ack vim
+nnoremap <leader>s :Ack<space>
+nnoremap <leader>sw :Ack '<cword>' <CR>
+nnoremap <leader>sd :Ack 'def <cword>' <CR>
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" colorizer
+let g:colorizer_maxlines = 100
+
+" ranger
+let g:NERDTreeHijackNetrw = 0
+let g:ranger_replace_netrw = 1
+
+" netranger
+"let g:NETROpenCmd = 'NETRNewTabdrop'
