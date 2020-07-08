@@ -37,7 +37,8 @@ Plugin 'rbong/vim-flog'
 
 Plugin 'godlygeek/tabular'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'mileszs/ack.vim'
+Plugin 'gabesoft/vim-ags'
+Plugin 'airblade/vim-rooter'
 
 Plugin 'vim-airline/vim-airline'
 
@@ -157,6 +158,7 @@ endif
 
 " startify
 noremap <C-t> :Startify<CR>
+let g:startify_change_to_dir = 0
 
 " current word
 let g:vim_current_word#highlight_current_word = 1
@@ -221,9 +223,9 @@ nmap <leader>qp :cp<CR>
 noremap <leader>af :Autoformat<CR>
 
 " ack vim
-nnoremap <leader>s :Ack<space>
-nnoremap <leader>sw :Ack '<cword>' <CR>
-nnoremap <leader>sd :Ack 'def <cword>' <CR>
+nnoremap <leader>s :Ags<space>
+nnoremap <leader>sw :Ags '<cword>' <CR>
+nnoremap <leader>sd :Ags 'def <cword>' <CR>
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -238,3 +240,6 @@ let g:ranger_replace_netrw = 1
 
 " netranger
 "let g:NETROpenCmd = 'NETRNewTabdrop'
+
+" rooter
+let g:rooter_patterns = ['.git/']
