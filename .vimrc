@@ -15,16 +15,19 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'matze/vim-move'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mhinz/vim-startify'
 Plugin 'pelodelfuego/vim-swoop'
 Plugin 'alvan/vim-closetag'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'qpkorr/vim-renamer'
+Plugin 'vim-ruby/vim-ruby'
+"Plugin 'dense-analysis/ale'
 
 "Plugin 'ipod825/vim-netranger'
-Plugin 'francoiscabrol/ranger.vim'
+"Plugin 'francoiscabrol/ranger.vim'
 "Plugin 'lambdalisue/fern.vim'
 "Plugin 'jeetsukumaran/vim-filebeagle'
 Plugin 'scrooloose/nerdtree'
@@ -33,11 +36,16 @@ Plugin 'scrooloose/nerdcommenter'
 "Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'idanarye/vim-merginal'
 Plugin 'rbong/vim-flog'
+Plugin 'k0kubun/vim-open-github'
 
 Plugin 'godlygeek/tabular'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'gabesoft/vim-ags'
+Plugin 'zxqfl/tabnine-vim'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'gabesoft/vim-ags'
+Plugin 'junegunn/fzf.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'airblade/vim-rooter'
 
 Plugin 'vim-airline/vim-airline'
@@ -67,10 +75,10 @@ set termguicolors
 set lazyredraw
 
 " folding
-set foldmethod=indent   
+set foldmethod=indent
 set foldnestmax=10
-set nofoldenable
 set foldlevel=2
+set foldlevelstart=99
 
 "syntax on
 let g:onedark_terminal_italics=1
@@ -94,11 +102,18 @@ set expandtab
 set smartindent
 set autoindent
 
-" copy and paste
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
+" copy/paste on windows
+"
+" copy (write) highlighted text to .vimbuffer
+"vmap <silent> <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
+" paste from buffer
+"map <C-v> :r ~/.vimbuffer<CR>
+
+" copy/paste on ubuntu
+"vmap <C-c> "+yi
+"vmap <C-x> "+c
+"vmap <C-v> c<ESC>"+p
+"imap <C-v> <ESC>"+pa
 
 " smarth way to move between windows
 noremap <Esc>j <C-W>j
@@ -191,8 +206,27 @@ highlight link Error DiffDelete
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 
-" ctrlp
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|android\|git\|plugins\|platforms'
+" fzf & rg
+set grepprg=rg\ --vimgrep\ --hidden\ --follow
+set rtp+=~/.fzf
+set rtp+=/usr/local/opt/fzf
+nnoremap \ :Rg<CR>
+nnoremap <C-p> :GFiles<cr>
+nnoremap <leader>sw :Rg '.expand('<cword>').'
+
+nmap ; :Buffers<CR>
+
+" ack vim
+let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+let g:ack_autoclose = 1
+let g:ack_use_cword_for_empty_search = 1
+
+cnoreabbrev Ack Ack!
+
+set shellpipe=>
+nnoremap <leader>s :Ack!<space>
+nnoremap <leader>sw :Ack! '<cword>' <CR>
+nnoremap <leader>sd :Ack 'def <cword>' <CR>
 
 " vColoor
 let g:vcoolor_disable_mappings = 1
@@ -200,9 +234,9 @@ let g:vcoolor_lowercase = 1
 let g:vcoolor_map = '<leader>c'
 
 " YCM
-nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>f :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>r :YcmCompleter GoToReferences<CR>
+"nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+"nnoremap <leader>f :YcmCompleter GoToDeclaration<CR>
+"nnoremap <leader>r :YcmCompleter GoToReferences<CR>
 
 " fugitive
 noremap <leader>gs :Gstatus<CR>
@@ -222,24 +256,18 @@ nmap <leader>qp :cp<CR>
 " autoformat
 noremap <leader>af :Autoformat<CR>
 
-" ack vim
-nnoremap <leader>s :Ags<space>
-nnoremap <leader>sw :Ags '<cword>' <CR>
-nnoremap <leader>sd :Ags 'def <cword>' <CR>
-
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
 " colorizer
 let g:colorizer_maxlines = 100
 
 " ranger
-let g:NERDTreeHijackNetrw = 0
-let g:ranger_replace_netrw = 1
+"let g:NERDTreeHijackNetrw = 0
+"let g:ranger_replace_netrw = 1
 
 " netranger
 "let g:NETROpenCmd = 'NETRNewTabdrop'
 
 " rooter
 let g:rooter_patterns = ['.git/']
+
+" Eclim
+let g:EclimCompletionMethod = 'omnifunc'
