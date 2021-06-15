@@ -186,8 +186,8 @@ let g:move_key_modifier = 'C'
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
-map n <Plug>(easymotion-next)
-map N <Plug>(easymotion-prev)
+map m <Plug>(easymotion-next)
+map M <Plug>(easymotion-prev)
 
 map <Leader> <Plug>(easymotion-prefix)
 
