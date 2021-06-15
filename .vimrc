@@ -283,3 +283,6 @@ let g:rooter_patterns = ['.git/']
 
 " Eclim
 let g:EclimCompletionMethod = 'omnifunc'
+
+" Startify
+set viminfo='100,n$HOME/.vim/files/info/viminfo'
