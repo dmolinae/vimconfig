@@ -17,6 +17,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'matze/vim-move'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mhinz/vim-startify'
 Plugin 'pelodelfuego/vim-swoop'
@@ -181,6 +182,17 @@ let g:vim_current_word#highlight_current_word = 1
 " vim move
 let g:move_key_modifier = 'C'
 
+" vim easymotion
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+
+map <Leader> <Plug>(easymotion-prefix)
+
+let g:EasyMotion_smartcase = 1
+
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"
 
@@ -211,7 +223,7 @@ set grepprg=rg\ --vimgrep\ --hidden\ --follow
 set rtp+=~/.fzf
 set rtp+=/usr/local/opt/fzf
 nnoremap \ :Rg<CR>
-nnoremap <C-p> :GFiles<cr>
+nnoremap <C-p> :Files<cr>
 nnoremap <leader>sw :Rg '.expand('<cword>').'
 
 nmap ; :Buffers<CR>
