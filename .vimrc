@@ -238,7 +238,7 @@ set rtp+=~/.fzf
 set rtp+=/usr/local/opt/fzf
 nnoremap \ :Rg<CR>
 nnoremap <C-p> :Files<cr>
-nnoremap <leader>sw :Rg '.expand('<cword>').'
+"nnoremap <leader>sw :Rg '.expand('<cword>').'
 
 nmap ; :Buffers<CR>
 
@@ -301,6 +301,3 @@ let g:rooter_patterns = ['.git/']
 
 " Eclim
 let g:EclimCompletionMethod = 'omnifunc'
-
-" Startify
-set viminfo='100,n$HOME/.vim/files/info/viminfo'
