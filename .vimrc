@@ -37,6 +37,7 @@ Plugin 'scrooloose/nerdcommenter'
 "Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'idanarye/vim-merginal'
 Plugin 'rbong/vim-flog'
 Plugin 'k0kubun/vim-open-github'
@@ -91,6 +92,7 @@ let mapleader=","
 set showmatch
 set mouse=a
 set scrolloff=10
+set ttymouse=sgr
 
 set hidden
 set history=100
@@ -104,11 +106,14 @@ set smartindent
 set autoindent
 
 " copy/paste on windows
-"
-" copy (write) highlighted text to .vimbuffer
-"vmap <silent> <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
-" paste from buffer
-"map <C-v> :r ~/.vimbuffer<CR>
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
 
 " copy/paste on ubuntu
 "vmap <C-c> "+yi
@@ -189,6 +194,15 @@ omap / <Plug>(easymotion-tn)
 map m <Plug>(easymotion-next)
 map M <Plug>(easymotion-prev)
 
+" <Leader>f{char} to move to {char}
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" Move to line
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
 map <Leader> <Plug>(easymotion-prefix)
 
 let g:EasyMotion_smartcase = 1
@@ -259,6 +273,10 @@ noremap <leader>ge :Gedit<CR>
 noremap <leader>gb :Gblame<CR>
 noremap <leader>glf :Glog -- %<CR><CR>
 noremap <leader>gl :Flog<CR>
+noremap <leader>gom :Gvsplit master:%<CR>
+
+" merginal
+noremap <leader>gc :MerginalToggle<CR>
 
 " quickfix
 nmap <leader>q <Plug>window:quickfix:toggle
