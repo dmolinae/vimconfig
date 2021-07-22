@@ -240,6 +240,9 @@ nnoremap \ :Rg<CR>
 nnoremap <C-p> :Files<cr>
 "nnoremap <leader>sw :Rg '.expand('<cword>').'
 
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 nmap ; :Buffers<CR>
 
 " ack vim
