@@ -32,10 +32,14 @@ Plugin 'vim-ruby/vim-ruby'
 "Plugin 'francoiscabrol/ranger.vim'
 "Plugin 'lambdalisue/fern.vim'
 "Plugin 'jeetsukumaran/vim-filebeagle'
-Plugin 'scrooloose/nerdtree'
+Plugin 'preservim/nerdtree'
+Plugin 'PhilRunninger/nerdtree-visual-selection'
 Plugin 'scrooloose/nerdcommenter'
-"Plugin 'Xuyuanp/nerdtree-git-plugin'
-"Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'ryanoasis/vim-devicons'
+"Plugin 'her/synicons.vim'
+"Plugin 'tsony-tsonev/nerdtree-git-plugin'
+
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
@@ -57,7 +61,6 @@ Plugin 'KabbAmine/vCoolor.vim'
 Plugin 'lilydjwg/colorizer'
 Plugin 'shmargum/vim-sass-colors'
 
-Plugin 'ryanoasis/vim-devicons'
 " Plugin 'dominikduda/vim_current_word'
 "Plugin 'RRethy/vim-illuminate'
 Plugin 'drmingdrmer/vim-toggle-quickfix'
@@ -254,7 +257,8 @@ let g:ack_use_cword_for_empty_search = 1
 cnoreabbrev Ack Ack!
 
 set shellpipe=>
-nnoremap <leader>s :Ack!<space>
+nnoremap <leader>sr :CtrlSF <CR>
+nnoremap <leader>srt :CtrlSFToggle <CR>
 nnoremap <leader>sw :Ack! '<cword>' <CR>
 nnoremap <leader>sd :Ack 'def <cword>' <CR>
 
