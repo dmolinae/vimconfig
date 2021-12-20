@@ -18,14 +18,21 @@ Plugin 'jiangmiao/auto-pairs'
 "Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'matze/vim-move'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch-fuzzy.vim'
+Plugin 'haya14busa/incsearch-easymotion.vim'
+
+Plugin 'nicwest/vim-camelsnek'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mhinz/vim-startify'
-"Plugin 'pelodelfuego/vim-swoop'
+Plugin 'pelodelfuego/vim-swoop'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'qpkorr/vim-renamer'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'kagux/vim-rubocop-autocorrect'
 "Plugin 'dense-analysis/ale'
 
 "Plugin 'ipod825/vim-netranger'
@@ -35,7 +42,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'preservim/nerdtree'
 Plugin 'PhilRunninger/nerdtree-visual-selection'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'ryanoasis/vim-devicons'
 "Plugin 'her/synicons.vim'
 "Plugin 'tsony-tsonev/nerdtree-git-plugin'
@@ -43,8 +50,8 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
-Plugin 'idanarye/vim-merginal'
-Plugin 'rbong/vim-flog'
+Plugin 'sodapopcan/vim-twiggy'
+Plugin 'junegunn/gv.vim'
 Plugin 'k0kubun/vim-open-github'
 
 Plugin 'godlygeek/tabular'
@@ -101,11 +108,13 @@ set ttymouse=sgr
 set hidden
 set history=100
 
+let g:python_recommended_style = 0
 filetype indent on
 set nowrap
+set expandtab
 set tabstop=2
 set shiftwidth=2
-set expandtab
+set softtabstop=2
 set smartindent
 set autoindent
 
@@ -192,8 +201,8 @@ let g:vim_current_word#highlight_current_word = 1
 let g:move_key_modifier = 'C'
 
 " vim easymotion
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+map  / <Plug>(incsearch-easymotion-/)
+omap / <Plug>(incsearch-easymotion-/)
 
 map m <Plug>(easymotion-next)
 map M <Plug>(easymotion-prev)
@@ -273,18 +282,16 @@ let g:vcoolor_map = '<leader>c'
 "nnoremap <leader>r :YcmCompleter GoToReferences<CR>
 
 " fugitive
-noremap <leader>gs :Gstatus<CR>
+noremap <leader>gs :Git<CR>
 noremap <leader>gd :Gdiff<CR>
 noremap <leader>gw :Gwrite<CR>
 noremap <leader>gr :Gread<CR>
 noremap <leader>ge :Gedit<CR>
 noremap <leader>gb :Gblame<CR>
 noremap <leader>glf :Glog -- %<CR><CR>
-noremap <leader>gl :Flog<CR>
+noremap <leader>gl :GV<CR>
+noremap <leader>gc :Twiggy<CR>
 noremap <leader>gom :Gvsplit master:%<CR>
-
-" merginal
-noremap <leader>gc :MerginalToggle<CR>
 
 " quickfix
 nmap <leader>q <Plug>window:quickfix:toggle
@@ -309,3 +316,6 @@ let g:rooter_patterns = ['.git/']
 
 " Eclim
 let g:EclimCompletionMethod = 'omnifunc'
+
+" Repeat vim
+silent! call repeat#set("\<Plug>:Snek", v:count)
